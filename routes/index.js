@@ -7,10 +7,10 @@ const router = require("express").Router();
 
 // DO NOT ADD UNTIL REACT
 // If no API ROUTES are hit, send the react app
-router.use(function (req, res)
-{
-   res.sendFile(path.join(__dirname, "../client/public/index.html"));
-});
+// router.use(function (req, res)
+// {
+//    res.sendFile(path.join(__dirname, "../client/public/index.html"));
+// });
 
 
 

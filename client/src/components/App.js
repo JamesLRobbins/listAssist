@@ -1,6 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import logo from '../../src/lA_logo.png';
+//import logo from './logo.svg';
+// USE <img src={logo} instead for boilerplate
+import '../../src/App.css';
 
 function App() {
   return (
