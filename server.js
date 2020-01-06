@@ -25,9 +25,9 @@ app.use(session({
 // Passport config - TODO: Check into correct use of db.User below. Need to define db!
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(new LocalStrategy(db.User.authenticate()));
-passport.serializeUser(db.User.serializeUser());
-passport.deserializeUser(db.User.deserializeUser());
+//passport.use(new LocalStrategy(db.User.authenticate()));
+//passport.serializeUser(db.User.serializeUser());
+//passport.deserializeUser(db.User.deserializeUser());
 
 
 // Serve up static assets (usually on heroku)
