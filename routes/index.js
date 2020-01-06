@@ -6,7 +6,7 @@ const apiRoutes = require("./api");
 router.use("/api", apiRoutes);
 
 router.route("/login")
-    .get(console.log("login get route called"))
+    .get(() => {console.log("login get route called")})
     .post((req, res, next)=> {
         console.log('server post username: ');
         console.log(req.body.username)
