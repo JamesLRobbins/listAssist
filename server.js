@@ -36,7 +36,7 @@ if (process.env.NODE_ENV === "production") {
 }
 // Add routes, both API and view
 
-// SAVE THIS STEP UNTIL ROUTES
+// Use the routing folder to handle our routes
 app.use(routes);
 
 // Connect to the Mongo DB
