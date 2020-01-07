@@ -12,12 +12,16 @@ class List extends Component {
                     <div className="col-md-12">
                             <Logo />
                             <div className="row">
-                        <div className="col-md-6 recipes">
+                        <div className="col-md-6">
+                            <div className="col-md-12 recipes">
                             <Recipes />
+                            </div>
                         </div>
 
-                        <div className="col-md-6 ingredients">
+                        <div className="col-md-6">
+                            <div className="col-md-12 ingredients">
                             <Ingredients />
+                            </div>
                         </div>
                     </div>
                 </div>
