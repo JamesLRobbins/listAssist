@@ -24,6 +24,10 @@ module.exports = {
   findOne: function (req, res) {
     console.log("req.body in findOne is: ");
     console.log(req.body);
+
+    //Set the username for the session
+    req.session.username = req.body.username;
+    
     db.User
       .findOne({ username: req.body.username }, (err, user) => {
         if (err) {

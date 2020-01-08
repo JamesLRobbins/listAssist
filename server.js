@@ -1,30 +1,45 @@
 const express = require("express");
 const mongoose = require("mongoose");
-// SAVE THIS STEP UNTIL ROUTES
 const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 //Packages for user authentication
-const session = require('express-session');
-const passport = require("passport");
-const LocalStrategy = require("passport-local");
+const session = require("express-session");
+const passport = require("./passport");
+
+//Not needed because used in ./passport
+//const LocalStrategy = require("passport-local");
+
 //var passportLocalMongoose = require("passport-local-mongoose");
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Session config
+// Express Session config
 app.use(session({
-  secret: "NotSoSecretSecret",
+  secret: "NotSoSecretSecret", //a random string to make the hash that is generated secure
   resave: false,
   saveUninitialized: false
 }));
 
+app.use( (req, res, next) => {
+	console.log('Express req.session in server.js is: ', req.session);
+	next()
+  });
+
 // Passport config - TODO: Check into correct use of db.User below. Need to define db!
+/*
+These lines of code run on every request. They call functions in
+the passport/index.js called serializeUser and deserializeUser.
+serializeUser stores the user id to req.session.passport.user = {id:’..’}.
+deserializeUser will check to see if this user is saved in the database, and
+if it is found it assigns it to the request as req.user = {user object}.
+ */
 app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.session());    // calls serializeUser and deserializeUser
+
 //passport.use(new LocalStrategy(db.User.authenticate()));
 //passport.serializeUser(db.User.serializeUser());
 //passport.deserializeUser(db.User.deserializeUser());

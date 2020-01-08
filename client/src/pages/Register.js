@@ -33,6 +33,7 @@ class Register extends Component {
             .then(response => {
                 console.log(response)
                 if (response.data) {
+                    //TODO: Handle response.data.error to process already used username
                     console.log('successful signup ' + response.data.error)
                     this.setState({
                         redirectTo: '/'
