@@ -14,6 +14,15 @@ const db = require("../models");
 
 module.exports = {
 
+  getSessionUser: function (req, res, next) {
+    console.log('===== getSessionUser in userController!!======');
+    console.log(req.user);
+    if (req.user) {
+      res.json({ user: req.user })
+    } else {
+      res.json({ user: null })
+    }
+  },
   findAll: function (req, res) {
     db.User
       .find(req.query)
@@ -27,7 +36,7 @@ module.exports = {
 
     //Set the username for the session
     req.session.username = req.body.username;
-    
+
     db.User
       .findOne({ username: req.body.username }, (err, user) => {
         if (err) {
