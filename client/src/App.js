@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route} from "react-router-dom";
-import Login from "../pages/Login";
-import '../../src/App.css';
-import Register from "../pages/Register";
-import List from "../pages/GroceryList";
+import Login from "./pages/Login";
+//import '../../client/src/';
+import "./App.css";
+import Register from "./pages/Register";
+import List from "./pages/GroceryList";
 
 
 class App extends Component {
