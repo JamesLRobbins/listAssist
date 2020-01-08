@@ -22,10 +22,10 @@ class Login extends Component {
 
     handleSubmit = event => {
         event.preventDefault()
-        console.log('sign-up-form, username: ');
+        console.log('login-form, username: ');
         console.log(this.state.username);
         //request to server here
-        axios.post('/api/user/new', {
+        axios.post('/api/login', {
             username: this.state.username,
             password: this.state.password
         })

@@ -34,11 +34,12 @@ module.exports = {
           })
         }
         else {
-          const newUser = new User({
+          const newUser = new db.User({
             username: req.body.username,
             password: req.body.password
           })
           newUser.save((err, savedUser) => {
+            console.log("user saved callback");
             if (err) return res.json(err)
             res.json(savedUser)
           })
@@ -52,7 +53,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function (req, res) {
-    console.log("yo");
+    console.log("create in userController called");
     //console.log(db);
     //console.log(db.Movie);
     db.User
