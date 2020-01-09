@@ -1,0 +1,25 @@
+[
+    {
+        "id": 0,
+        "name": "Fajitas",
+        "ingredients": ["Chicken", "Steak", "Onions", "Tomatoes", "Cheese"]
+    },
+
+    {
+        "id": 1,
+        "name": "Pizza",
+        "ingredients": ["Cheese", "Sauce", "Pepperoni"]
+    },
+
+     {
+        "id": 2,
+        "name": "Spaghetti",
+        "ingredients": ["Cheese", "Sauce", "Noodles"]
+     },
+
+     {
+         "id": 3,
+         "name": "Shrimp Scampi",
+         "ingredients": ["Shrimp", "Garlic", "Butter"]
+     }
+]
