@@ -12,9 +12,7 @@ class App extends Component {
     super();
     this.state = {
       loggedIn: false,
-      username: null,
-      recipes: ["Fajitas", "Pizza", "Shrimp Scampi"],
-      ingredients: ["Steak", "Cheese", "Shrimp", "Butter", "Garlic"]
+      username: null
     }
 
     this.getUser = this.getUser.bind(this)
