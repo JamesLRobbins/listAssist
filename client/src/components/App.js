@@ -9,14 +9,9 @@ import List from "../pages/GroceryList";
 
 class App extends Component {
 
-  state = {
-    recipes: ["Fajitas", "Pizza", "Shrimp Scampi"],
-    ingredients: ["Steak", "Cheese", "Shrimp", "Butter", "Garlic"]
-  }
-
   render() {
   return (
-    <div class="container-fluid">
+    <div className="container-fluid">
     <Router>
       <Route exact path="/" component={Login} />
       <Route exact path="/register" component={Register} />

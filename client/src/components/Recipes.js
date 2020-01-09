@@ -1,14 +1,11 @@
 import React from "react";
 
-function Recipes() {
+function recipeList(props) {
     return (
         <div>
-            <h1>Recipes</h1>
-            Fajitas<br />
-            Pizza<br />
-            Shrimp Scampi<br />
+            <div id={props.id} onClick={() => props.handleClick(props.id, props.ingredients)}>{props.name}</div>
         </div>
-    );
+    )
 }
 
-export default Recipes;
+export default recipeList;
