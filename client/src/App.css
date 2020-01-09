@@ -23,8 +23,6 @@ h1 {
   font-size: larger;
   text-align: center;
   padding: 15px;
-  background-color: azure;
+  background-image: url(components\paperbackground.jpg) ;
 }
-.ingredients {
-  background-color: azure;
-}
+
