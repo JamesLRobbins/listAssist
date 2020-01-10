@@ -51,7 +51,7 @@ class Navbar extends Component {
                             {loggedIn ? (
                                 <section id="logout-link" className="navbar-section">
                                     <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>
-                                        <span className="text-secondary">logout</span></Link>
+                                        <span className="text-primary">logout</span></Link>
 
                                 </section>
                             ) : (
