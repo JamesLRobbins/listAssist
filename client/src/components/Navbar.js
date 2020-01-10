@@ -8,6 +8,9 @@ import axios from 'axios'
 class Navbar extends Component {
     constructor() {
         super()
+        this.state = {
+            redirectTo: null
+        }
         this.logout = this.logout.bind(this)
     }
 
@@ -15,52 +18,52 @@ class Navbar extends Component {
         event.preventDefault()
         console.log('logging out')
         axios.post('/user/logout').then(response => {
-          console.log(response.data)
-          if (response.status === 200) {
-            this.props.updateUser({
-              loggedIn: false,
-              username: null
-            })
-          }
+            console.log(response.data)
+            if (response.status === 200) {
+                this.props.updateUser({
+                    loggedIn: false,
+                    username: null
+                })
+                //Show home/login page after successful logout
+                console.log("redirectTo: slash")
+                this.setState({
+                    redirectTo: "/"
+                })
+            }
         }).catch(error => {
             console.log('Logout error')
         })
-      }
+    }
 
     render() {
         const loggedIn = this.props.loggedIn;
         console.log('navbar render, props: ')
         console.log(this.props);
-        
-        return (
-            <div>
+        if (this.state.redirectTo) {
+            return <Redirect to={{ pathname: this.state.redirectTo }} />
+        } else {
 
-                <header className="navbar App-header" id="nav-container">
-                    <div className="col-4" >
-                        {loggedIn ? (
-                            <section className="navbar-section">
-                                <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>
-                                <span className="text-secondary">logout</span></Link>
+            return (
+                <div>
 
-                            </section>
-                        ) : (
-                                <section className="navbar-section">
-                                    <Link to="/" className="btn btn-link text-secondary">
-                                        <span className="text-secondary">home</span>
-                                        </Link>
-                                    <Link to="/login" className="btn btn-link text-secondary">
-                                    <span className="text-secondary">login</span>
-				</Link>
-                                    <Link to="/signup" className="btn btn-link">
-                                    <span className="text-secondary">sign up</span>
-				</Link>
+                    <header className="navbar App-header" id="nav-container">
+                        <div className="col-4" >
+                            {loggedIn ? (
+                                <section id="logout-link" className="navbar-section">
+                                    <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>
+                                        <span className="text-secondary">logout</span></Link>
+
                                 </section>
-                            )}
-                    </div>
-                </header>
-            </div>
+                            ) : (
+                                    <section className="navbar-section">
+                                    </section>
+                                )}
+                        </div>
+                    </header>
+                </div>
 
-        );
+            );
+        }
 
     }
 }

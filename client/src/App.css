@@ -26,3 +26,7 @@ h1 {
   background-image: url(components\paperbackground.jpg) ;
 }
 
+#logout-link{
+  float: right;
+}
+
