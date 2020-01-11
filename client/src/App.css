@@ -14,7 +14,7 @@ h1 {
   font-style: oblique;
 }
 
-.recipes, .ingredients{
+.recipes, .ingredients {
   border-style: solid;
   border-radius: 4px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -23,6 +23,10 @@ h1 {
   font-size: larger;
   text-align: center;
   padding: 15px;
-  background-image: url(components\paperbackground.jpg) ;
+  background-image: url(components\paperbackground.jpg);
 }
 
+#nav-container {
+  float: right;
+  color: #1E90FF;
+}

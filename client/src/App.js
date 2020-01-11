@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import axios from "axios";
 import Login from "./components/Login";
+import Navbar from "./components/Navbar";
 import "./App.css";
 import Register from "./pages/Register";
 import List from "./pages/GroceryList";
@@ -22,6 +23,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    //Get the user that is currently logged in
     this.getUser()
   }
 
@@ -54,7 +56,9 @@ class App extends Component {
   render() {
     return (
       <div className="container-fluid">
+        
         <Router>
+        <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
           <Route
             exact path="/"
             render={() =>

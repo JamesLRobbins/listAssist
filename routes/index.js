@@ -5,6 +5,15 @@ const apiRoutes = require("./api");
 
 router.use("/api", apiRoutes);
 
+router.post("/logout", (req, res) => {
+    if (req.user) {
+        req.logout()
+        res.send({ msg: 'logging out...' })
+    } else {
+        res.send({ msg: 'no user to log out' })
+    }
+})
+
 /* router.route("/login")
     .get(() => {console.log("login get route called")})
     .post((req, res, next)=> {
