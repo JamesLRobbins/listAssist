@@ -11,6 +11,7 @@ class List extends Component {
     state = {
         recipes,
         clickedRecipes: [],
+        allIngredients: [],
         groceryList: [],
     
       }
@@ -19,28 +20,34 @@ class List extends Component {
 
         let clickedRecipes = this.state.clickedRecipes;
         let groceryList = this.state.groceryList
+        let allIngredients = this.state.allIngredients
+        
+        if (clickedRecipes.includes(id)) {
+            clickedRecipes.splice(id)
+            groceryList.splice(ingredients)
+            document.getElementById(id).style.background="none";
+            document.getElementById(id).style.color="black";
+           
+            this.setState({clickedRecipes: clickedRecipes})
+            
 
-        //If ID is in clicked Recipes, return
-
-        groceryList.push(ingredients)
-        this.setState({groceryList: groceryList})
-        clickedRecipes.push(id)
-        // this.handleChange();
-
+        } else {
+            allIngredients.push(ingredients)
+            this.setState({allIngredients: allIngredients})
+            
+            groceryList.push(ingredients);    
+            this.setState({groceryList: groceryList})
+            clickedRecipes.push(id)
+            document.getElementById(id).style.background="blue";
+            document.getElementById(id).style.color="white";
+            
+        }
+    
         console.log("Grocery List: " + groceryList)
         console.log("Clicked Recipes: " + clickedRecipes)
 
       }
 
-    //   handleChange = (e) => {
-    //       this.setState({
-    //           groceryList: e.target.value
-    //       })
-    //       this.props.onChange(e.target.value)
-    //   }
-
-     
-      
     render() {
         return (
             <div className="container">
