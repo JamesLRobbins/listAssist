@@ -12,7 +12,7 @@ class List extends Component {
         recipes,
         clickedRecipes: [],
         groceryList: [],
-        test: 0
+    
       }
 
       handleClick = (id, ingredients) => {
@@ -20,14 +20,24 @@ class List extends Component {
         let clickedRecipes = this.state.clickedRecipes;
         let groceryList = this.state.groceryList
 
-        clickedRecipes.push(id)
+        //If ID is in clicked Recipes, return
+
         groceryList.push(ingredients)
-        console.log("Ingredients " + groceryList)
-        console.log(clickedRecipes)
+        this.setState({groceryList: groceryList})
+        clickedRecipes.push(id)
+        // this.handleChange();
 
-
+        console.log("Grocery List: " + groceryList)
+        console.log("Clicked Recipes: " + clickedRecipes)
 
       }
+
+    //   handleChange = (e) => {
+    //       this.setState({
+    //           groceryList: e.target.value
+    //       })
+    //       this.props.onChange(e.target.value)
+    //   }
 
      
       
@@ -58,17 +68,18 @@ class List extends Component {
 
                         <div className="col-md-6">
                             <div className="col-md-12 ingredients">
-                                    <h1>Ingredients</h1>
+                                    <h1>Grocery List</h1>
                                     <Wrapper>
+                                        {this.state.groceryList.map((ingredient, index) => (
+                                            <Ingredients
+                                                key={index}
+                                                name={ingredient}
+                                            />
 
-                                        <Ingredients 
-                                        
-                                        />  
-
+                                        ))}
                                     
-                                    </Wrapper>
-                                  
 
+                                    </Wrapper>  
                                 </div>
                         </div>
                     </div>
