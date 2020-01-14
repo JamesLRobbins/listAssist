@@ -12,9 +12,7 @@ class List extends Component {
         recipes,
         clickedRecipes: [],
         allIngredients: [],
-        filteredList: [],
-        groceryList: [],
-    
+        groceryList: []
       }
 
       handleClick = (id, ingredients) => {
@@ -26,40 +24,32 @@ class List extends Component {
         if (clickedRecipes.includes(id)) {
             clickedRecipes.splice(id)
             groceryList.splice(ingredients)
+
             document.getElementById(id).style.background="none";
             document.getElementById(id).style.color="black";
             document.getElementById(id).style.border="none"
-            this.setState({clickedRecipes: clickedRecipes})
+            this.setState({clickedRecipes: [""]})
+            this.setState({groceryList: [""]})
             
 
         } else {
-            // allIngredients.push(ingredients) 
 
             for (let i = 0; i < ingredients.length; i++) {
                 allIngredients.push(ingredients[i])
             }
 
             this.setState({allIngredients: allIngredients})
-            console.log('All Ingredients: ' + allIngredients)
-            console.log("line 39")
-            console.log(allIngredients)
 
             let filteredList = [...new Set(allIngredients)]
             this.setState({filteredList: filteredList})
-            console.log("Filtered list: " + filteredList)
-
-            // groceryList.push(filteredList);    
+   
             this.setState({groceryList: filteredList})
             clickedRecipes.push(id)
-            document.getElementById(id).style.background="blue";
-            document.getElementById(id).style.border="solid";
+            document.getElementById(id).style.button="#10white8BF8";
+            document.getElementById(id).style.border="inset";
             document.getElementById(id).style.color="white";
             
         }
-    
-        console.log("Grocery List: " + groceryList)
-        console.log("Clicked Recipes: " + clickedRecipes)
-
       }
 
     render() {
@@ -91,7 +81,7 @@ class List extends Component {
                             <div className="col-md-12 ingredients">
                                     <h1>Grocery List</h1>
                                     <Wrapper>
-                                        {this.state.filteredList.map((ingredient, index) => (
+                                        {this.state.groceryList.map((ingredient, index) => (
                                             <Ingredients
                                                 key={index}
                                                 name={ingredient}
