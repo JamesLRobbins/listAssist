@@ -8,44 +8,95 @@ mongoose.connect(
   "mongodb://localhost/listAssist"
 );
 
-const recipeSeed = [
+const userSeed = [
   {
-    title: "Chicken Parmesan",
-    instructions:
-    "Cook chicken. Put tomato sauce on it. Put the parm parm on it.",
-
-    ingredient1: "1 Chicken",
-    ingredient2: "1 Parmesan",
-    ingredient3: "2 Tomatoes",
-    date: new Date(Date.now())
-  },
-  {
-    title: "Chicken Parmesan",
-    instructions:
-    "Cook chicken. Put tomato sauce on it. Put the parm parm on it.",
-
-    ingredient1: "1 Chicken",
-    ingredient2: "1 Parmesan",
-    ingredient3: "2 Tomatoes",
-    date: new Date(Date.now())
-  },
-  {
-    title: "Chicken Parmesan",
-    instructions:
-    "Cook chicken. Put tomato sauce on it. Put the parm parm on it.",
-
-    ingredient1: "1 Chicken",
-    ingredient2: "1 Parmesan",
-    ingredient3: "2 Tomatoes",
-    date: new Date(Date.now())
-  }
+  username: "test@test.com",
+  password: "123",
+  recipes: [
+    {
+      title: "Fajitas",
+      instructions:
+      "Cook chicken. Put tomato sauce on it. Put the parm parm on it.",
+      ingredients: ["Chicken", "Steak", "Onions", "Tomatoes", "Cheese"],
+      date: new Date(Date.now())
+    },
+    {
+      title: "Pizza",
+      instructions:
+      "Cook chicken. Put tomato sauce on it. Put the parm parm on it.",
+      ingredients: ["Cheese", "Sauce", "Pepperoni"],
+      date: new Date(Date.now())
+    },
+    {
+      title: "Spaghetti",
+      instructions:
+      "Cook chicken. Put tomato sauce on it. Put the parm parm on it.",
+      ingredients: ["Cheese", "Sauce", "Noodles"],
+      date: new Date(Date.now())
+    }
+  ]
+},
+{
+  username: "test2@test2.com",
+  password: "123",
+  recipes: [
+    {
+      title: "Fajitas",
+      instructions:
+      "Cook chicken. Put tomato sauce on it. Put the parm parm on it.",
+      ingredients: ["Chicken", "Steak", "Onions", "Tomatoes", "Cheese"],
+      date: new Date(Date.now())
+    },
+    {
+      title: "Pizza",
+      instructions:
+      "Cook chicken. Put tomato sauce on it. Put the parm parm on it.",
+      ingredients: ["Cheese", "Sauce", "Pepperoni"],
+      date: new Date(Date.now())
+    },
+    {
+      title: "Spaghetti",
+      instructions:
+      "Cook chicken. Put tomato sauce on it. Put the parm parm on it.",
+      ingredients: ["Cheese", "Sauce", "Noodles"],
+      date: new Date(Date.now())
+    }
+  ]
+},
+{
+  username: "test3@test3.com",
+  password: "123",
+  recipes: [
+    {
+      title: "Fajitas",
+      instructions:
+      "Cook chicken. Put tomato sauce on it. Put the parm parm on it.",
+      ingredients: ["Chicken", "Steak", "Onions", "Tomatoes", "Cheese"],
+      date: new Date(Date.now())
+    },
+    {
+      title: "Pizza",
+      instructions:
+      "Cook chicken. Put tomato sauce on it. Put the parm parm on it.",
+      ingredients: ["Cheese", "Sauce", "Pepperoni"],
+      date: new Date(Date.now())
+    },
+    {
+      title: "Spaghetti",
+      instructions:
+      "Cook chicken. Put tomato sauce on it. Put the parm parm on it.",
+      ingredients: ["Cheese", "Sauce", "Noodles"],
+      date: new Date(Date.now())
+    }
+  ]
+}
 ];
 
-db.Recipe
+db.User
   .remove({})
-  .then(() => db.Recipe.collection.insertMany(recipeSeed))
+  .then(() => db.User.collection.insertMany(userSeed))
   .then(data => {
-    console.log(data.result.n + " records inserted!");
+    console.log(data.result.n + " records inserted into users collection!");
     process.exit(0);
   })
   .catch(err => {
