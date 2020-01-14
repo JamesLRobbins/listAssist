@@ -12,6 +12,7 @@ class List extends Component {
         recipes,
         clickedRecipes: [],
         allIngredients: [],
+        filteredList: [],
         groceryList: [],
     
       }
@@ -27,18 +28,31 @@ class List extends Component {
             groceryList.splice(ingredients)
             document.getElementById(id).style.background="none";
             document.getElementById(id).style.color="black";
-           
+            document.getElementById(id).style.border="none"
             this.setState({clickedRecipes: clickedRecipes})
             
 
         } else {
-            allIngredients.push(ingredients)
+            // allIngredients.push(ingredients) 
+
+            for (let i = 0; i < ingredients.length; i++) {
+                allIngredients.push(ingredients[i])
+            }
+
             this.setState({allIngredients: allIngredients})
-            
-            groceryList.push(ingredients);    
-            this.setState({groceryList: groceryList})
+            console.log('All Ingredients: ' + allIngredients)
+            console.log("line 39")
+            console.log(allIngredients)
+
+            let filteredList = [...new Set(allIngredients)]
+            this.setState({filteredList: filteredList})
+            console.log("Filtered list: " + filteredList)
+
+            // groceryList.push(filteredList);    
+            this.setState({groceryList: filteredList})
             clickedRecipes.push(id)
             document.getElementById(id).style.background="blue";
+            document.getElementById(id).style.border="solid";
             document.getElementById(id).style.color="white";
             
         }
@@ -77,7 +91,7 @@ class List extends Component {
                             <div className="col-md-12 ingredients">
                                     <h1>Grocery List</h1>
                                     <Wrapper>
-                                        {this.state.groceryList.map((ingredient, index) => (
+                                        {this.state.filteredList.map((ingredient, index) => (
                                             <Ingredients
                                                 key={index}
                                                 name={ingredient}
