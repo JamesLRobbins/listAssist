@@ -9,11 +9,11 @@ const userSchema = new Schema({
     username: { type: String, unique: true },
     password: { type: String, required: true },
     date: { type: Date, default: Date.now },
-    recipe: [{
+    recipes: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Recipe"
     }],
-    grocerieList: [{
+    grocerieLists: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "GList"
     }]
@@ -25,7 +25,7 @@ userSchema.methods = {
 		return bcrypt.compareSync(inputPassword, this.password)
 	},
 	hashPassword: plainTextPassword => {
-		return bcrypt.hashSync(plainTextPassword, 10)
+		return bcrypt.hashSync(plainTextPassword, 10) //The second argument is the number of rounds to use when generating a salt.
 	}
 }
 

@@ -18,6 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Express Session config
+//The reason express session is used is to know if a browser has made a request to us before.
 app.use(session({
   secret: "NotSoSecretSecret", //a random string to make the hash that is generated secure
   resave: false,
