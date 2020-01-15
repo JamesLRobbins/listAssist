@@ -16,14 +16,83 @@ const userSeed = [
   {
     username: "test@test.com",
     password: encryptedPassword,
+    recipes: [
+      {
+        title: "Fajitas",
+        instructions:
+          "Cook chicken. Put tomato sauce on it. Put the parm parm on it.",
+        ingredients: ["Chicken", "Steak", "Onions", "Tomatoes", "Cheese"],
+        date: new Date(Date.now())
+      },
+      {
+        title: "Pizza",
+        instructions:
+          "Roll out the dough. Cook chicken. Put tomato sauce on it. Put the parm parm on it.",
+        ingredients: ["Cheese", "Sauce", "Pepperoni"],
+        date: new Date(Date.now())
+      },
+      {
+        title: "Spaghetti",
+        instructions:
+          "Boil some water. Cook chicken. Put tomato sauce on it. Put the parm parm on it.",
+        ingredients: ["Cheese", "Sauce", "Noodles"],
+        date: new Date(Date.now())
+      }    
+    ]
   },
   {
     username: "test2@test2.com",
     password: encryptedPassword,
+    recipes: [
+      {
+        title: "Fajitas",
+        instructions:
+          "Cook chicken. Put tomato sauce on it. Put the parm parm on it.",
+        ingredients: ["Chicken", "Steak", "Onions", "Tomatoes", "Cheese"],
+        date: new Date(Date.now())
+      },
+      {
+        title: "Pizza",
+        instructions:
+          "Roll out the dough. Cook chicken. Put tomato sauce on it. Put the parm parm on it.",
+        ingredients: ["Cheese", "Sauce", "Pepperoni"],
+        date: new Date(Date.now())
+      },
+      {
+        title: "Spaghetti",
+        instructions:
+          "Boil some water. Cook chicken. Put tomato sauce on it. Put the parm parm on it.",
+        ingredients: ["Cheese", "Sauce", "Noodles"],
+        date: new Date(Date.now())
+      }    
+    ]
   },
   {
     username: "test3@test3.com",
     password: encryptedPassword,
+    recipes: [
+      {
+        title: "Fajitas",
+        instructions:
+          "Cook chicken. Put tomato sauce on it. Put the parm parm on it.",
+        ingredients: ["Chicken", "Steak", "Onions", "Tomatoes", "Cheese"],
+        date: new Date(Date.now())
+      },
+      {
+        title: "Pizza",
+        instructions:
+          "Roll out the dough. Cook chicken. Put tomato sauce on it. Put the parm parm on it.",
+        ingredients: ["Cheese", "Sauce", "Pepperoni"],
+        date: new Date(Date.now())
+      },
+      {
+        title: "Spaghetti",
+        instructions:
+          "Boil some water. Cook chicken. Put tomato sauce on it. Put the parm parm on it.",
+        ingredients: ["Cheese", "Sauce", "Noodles"],
+        date: new Date(Date.now())
+      }    
+    ]
   }
 ];
 
@@ -39,7 +108,8 @@ db.User
     process.exit(1);
   });
 
-//Seed data for our default recipes
+//Seed data for our default recipes if using a relational model
+/* ----------------
 const recipeSeed = [
   {
     title: "Fajitas",
@@ -76,3 +146,4 @@ db.Recipe
     console.error(err);
     process.exit(1);
   });
+ -------------------*/

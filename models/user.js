@@ -3,13 +3,21 @@ const Schema = mongoose.Schema;
 const bcrypt = require('bcryptjs');
 const passportLocalMongoose = require("passport-local-mongoose");
 
+//var recipeSchema = require("./recipe");
+// new Schema({ name: 'string' });
+
 //TODO: Define passport schema
 
 const userSchema = new Schema({
     username: { type: String, unique: true },
     password: { type: String, required: true },
     date: { type: Date, default: Date.now },
-    recipes: [{
+    recipes: Array,
+    grocerieLists: Array
+});
+
+/* ----- Relational model implementation
+recipes: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Recipe"
     }],
@@ -17,7 +25,7 @@ const userSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "GList"
     }]
-});
+----------*/
 
 // Define schema methods
 userSchema.methods = {
