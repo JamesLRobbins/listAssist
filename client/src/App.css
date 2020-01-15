@@ -18,15 +18,26 @@ h1 {
   border-style: solid;
   border-radius: 4px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-stretch: expanded;
-  font-size: larger;
-  text-align: center;
-  padding: 15px;
   background-image: url(components\paperbackground.jpg);
+  padding: 15px;
+  text-align: center;
+  font-size: 15px;
 }
 
-#nav-container {
-  float: right;
-  color: #1E90FF;
+.ingredients {
+  line-height: .7;
 }
+
+h1 {
+
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-stretch: expanded;
+  font-size: 40px;
+  text-align: center;
+  
+}
+
+
+
+
+

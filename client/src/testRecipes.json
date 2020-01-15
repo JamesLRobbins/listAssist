@@ -2,24 +2,29 @@
     {
         "id": 0,
         "name": "Fajitas",
-        "ingredients": ["Chicken", "Steak", "Onions", "Tomatoes", "Cheese"]
+        "ingredients": ["Chicken", "Steak", "Onions", "Tomatoes", "Cheese"],
+        "className": "remove"
+        
     },
 
     {
         "id": 1,
         "name": "Pizza",
-        "ingredients": ["Cheese", "Sauce", "Pepperoni"]
+        "ingredients": ["Cheese", "Sauce", "Pepperoni"],
+        "className": "remove"
     },
 
      {
         "id": 2,
         "name": "Spaghetti",
-        "ingredients": ["Cheese", "Sauce", "Noodles"]
+        "ingredients": ["Cheese", "Sauce", "Noodles"],
+        "className": "remove"
      },
 
      {
          "id": 3,
          "name": "Shrimp Scampi",
-         "ingredients": ["Shrimp", "Garlic", "Butter"]
+         "ingredients": ["Shrimp", "Garlic", "Butter"],
+         "className": "remove"
      }
 ]

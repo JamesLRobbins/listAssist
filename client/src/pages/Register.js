@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Logo from "../components/Logo";
 import { Link } from "react-router-dom";
+import { Button, Icon } from "semantic-ui-react";
 
 //for routing
 import axios from "axios";
@@ -82,14 +83,20 @@ class Register extends Component {
                             </div>
                             <div className="row">
                                 <div className="col-md-6">
-                                    <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
+                                    <button type="submit" className="btn btn-primary" class="ui animated button blue" onClick={this.handleSubmit}>
+                                        <div class="visible content">Submit</div>
+                                        <div class="hidden content">Submit <Icon name="cart" /></div>
+                                    </button>
                                 </div>
                                 <div className="col-md-6">
                                     <Link
                                         to="/"
-                                        className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}
+                                        className={window.location.pathname === "/"}
                                     >
-                                        Home
+                                        <button class="ui animated button blue">
+                                            <div class="visible content">Home</div>
+                                            <div class="hidden content">Home <Icon name="home" /></div>
+                                        </button>
                                     </Link>
                                 </div>
 

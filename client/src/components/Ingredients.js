@@ -3,15 +3,13 @@ import React from "react";
 function Ingredients(props) {
     return (
         <div>
-           <div><ul>
-            
-                {props.name.map((ingredient, index) => (
-                    <li key={index}>{ingredient}</li>
-                ))}
+           <ul>
+                
+                {props.name}
                
                </ul>
                
-            </div>
+            
         </div>
     );
 }

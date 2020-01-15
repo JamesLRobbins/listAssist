@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import Logo from "./Logo";
 import { Link } from "react-router-dom";
+import { Button, Icon } from 'semantic-ui-react'
 //for routing
 import axios from "axios";
 
@@ -87,15 +88,25 @@ class Login extends Component {
                                 </div>
                                 <div className="row">
                                     <div className="col-md-6">
-                                        <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Login</button>
+                                        <button type="submit" class="ui blue animated button" onClick={this.handleSubmit}>
+                                            <div class="visible content">Already Registered?</div>
+                                            <div class="hidden content">Login Now! <Icon name="sign-in" /></div>
+                                        </button>
                                     </div>
                                     <div className="col-md-6">
                                         <Link
                                             to="/register"
-                                            className={window.location.pathname === "/register" ? "nav-link active" : "nav-link"}
+                                            className={window.location.pathname === "/register"}
                                         >
-                                            Register
+
+                                            <button class="ui animated blue button">
+                                                <div class="visible content">No Account?</div>
+                                                <div class="hidden content">Register Now! <Icon name="signup" /></div>
+                                            </button>   
+                                            
                                     </Link>
+
+                                    
                                     </div>
                                 </div>
                             </form>
