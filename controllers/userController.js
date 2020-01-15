@@ -51,6 +51,7 @@ module.exports = {
             username: req.body.username,
             password: req.body.password
           })
+
           newUser.save((err, savedUser) => {
             console.log("user saved callback");
             if (err) return res.json(err)
@@ -86,6 +87,23 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
-  }
+  },
+  getRecipes: function () {
+    //TODO: Complete function with embedded model
+		db.collection('users').aggregate([
+			{ $lookup:
+			   {
+				 from: 'recipes',
+				 localField: 'product_id',
+				 foreignField: '_id',
+				 as: 'orderdetails'
+			   }
+			 }
+			]).toArray(function(err, res) {
+			if (err) throw err;
+			console.log(JSON.stringify(res));
+			});
+	}
+
 
 };
