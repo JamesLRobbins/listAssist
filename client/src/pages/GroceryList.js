@@ -4,7 +4,7 @@ import RecipeList from "../components/Recipes";
 import Ingredients from "../components/Ingredients";
 import recipes from "../testRecipes.json";
 import Wrapper from "../components/Wrapper";
-
+import axios from "axios";
 
 class List extends Component {
 
@@ -12,8 +12,50 @@ class List extends Component {
         recipes,
         clickedRecipes: [],
         allIngredients: [],
-        groceryList: []
+        groceryList: [],
+        loggedIn: false,
+        username: null
       }
+
+      componentDidMount() {
+        //Get the user that is currently logged in
+        this.getUser()
+      }    
+
+      getUser() {
+        axios.get('/api/user/').then(response => {
+          console.log('Grocery page get user response: ')
+          console.log(response.data)
+          if (response.data.user) {
+            console.log('Get User: There is a user saved in the server session: ');
+            console.log(response.data.user.username);
+    
+            this.setState({
+              loggedIn: true,
+              username: response.data.user.username
+            })
+
+            console.log("id: " + response.data.user.id);
+
+            populateUserRecipes(response.data.user.id);
+
+          } else {
+            console.log('Get user: no user');
+            this.setState({
+              loggedIn: false,
+              username: null
+            })
+          }
+        })
+      }
+
+      populateUserRecipes(id) {
+          //Send the user id to get the recipes saved for that user
+          //TODO
+          axios.get("api/user/recipe/id");
+
+      }
+    
 
       handleClick = (id, ingredients) => {
 
