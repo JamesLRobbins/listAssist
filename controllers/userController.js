@@ -12,6 +12,31 @@ const db = require("../models");
 // ** make sure you change the model name after db.
 // ** watch for the sort function it depends on the date column
 
+const defaultUserData = [
+  {
+    title: "Fajitas",
+    instructions:
+      "Cook chicken. Put tomato sauce on it. Put the parm parm on it.",
+    ingredients: ["Chicken", "Steak", "Onions", "Tomatoes", "Cheese"],
+    date: new Date(Date.now())
+  },
+  {
+    title: "Pizza",
+    instructions:
+      "Roll out the dough. Cook chicken. Put tomato sauce on it. Put the parm parm on it.",
+    ingredients: ["Cheese", "Sauce", "Pepperoni"],
+    date: new Date(Date.now())
+  },
+  {
+    title: "Spaghetti",
+    instructions:
+      "Boil some water. Cook chicken. Put tomato sauce on it. Put the parm parm on it.",
+    ingredients: ["Cheese", "Sauce", "Noodles"],
+    date: new Date(Date.now())
+  }    
+];
+
+
 module.exports = {
 
   getSessionUser: function (req, res, next) {
@@ -49,7 +74,8 @@ module.exports = {
         else {
           const newUser = new db.User({
             username: req.body.username,
-            password: req.body.password
+            password: req.body.password,
+            recipes: defaultUserData
           })
 
           newUser.save((err, savedUser) => {
