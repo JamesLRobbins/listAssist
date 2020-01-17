@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Logo from "../components/Logo";
 import RecipeList from "../components/Recipes";
 import Ingredients from "../components/Ingredients";
+//Local data for testing:
 //import recipes from "../testRecipes.json";
 import Wrapper from "../components/Wrapper";
 import axios from "axios";
@@ -18,7 +19,7 @@ class List extends Component {
     }
 
     componentDidMount() {
-        //Get the user that is currently logged in
+        //Get the user that is currently logged in and load their recipes
         this.getUser()
     }
 
@@ -57,29 +58,25 @@ class List extends Component {
         axios.get("/api/user/recipe/" + id).then(
             res => {
                 this.setState({
-
                     recipes: res.data.recipes
                 });
-                //console.log("res in GroceryList.js populateUserRecipes is: " + JSON.stringify(res.data.recipes));
             }
         ).catch(err => console.log(err));
-
     }
 
     handleClick = (id, ingredients) => {
 
         console.log("Ingredients clicked are: " + ingredients);
-        //console.log("this.state.recipes is an array of objects: " + this.state.recipes);
 
         let clickedRecipes = this.state.clickedRecipes;
-        let groceryList = this.state.groceryList
-        let allIngredients = this.state.allIngredients
+        let groceryList = this.state.groceryList;
+        let allIngredients = this.state.allIngredients;
 
         if (clickedRecipes.includes(id)) {
             console.log("clickedRecipes before: " + clickedRecipes);
 
+            //Find the index of the id(recipe title) we want to remove
             const isID = (element) => element === id;
-            //console.log("index to remove is: " + (clickedRecipes.findIndex(isID)));
             let indexToRemove = clickedRecipes.findIndex(isID);
 
             //Splice out the 1 recipe that was clicked by using its index
@@ -87,11 +84,7 @@ class List extends Component {
 
             console.log("clickedRecipes after splice: " + clickedRecipes);
 
-            //Loop through the ingredients finding the index in the groceryList array 
-            // where the value of it matches the ingredient. Then splice
-            // it out of the grocery list.
-
-            //Get a temporary array from the titles in clickedRecipes
+            //Get a temporary array of ingredients from the titles in clickedRecipes
             let onlyActiveIngredientsArr = this.getArrayFromRecipes(clickedRecipes);
 
             console.log("Only ingredients: " + onlyActiveIngredientsArr);
@@ -99,29 +92,15 @@ class List extends Component {
 
             let filteredList2 = [...new Set(onlyActiveIngredientsArr)];
 
-            //let ingredIndexToRemove = 
+            console.log("After filter: " + filteredList2);
 
-            //groceryList.splice(ingredIndexToRemove, 1);
-            /* 
-                        for (let k = 0; k < ingredients.length; k++) {
-                            //TODO: if ingredients[k] is in a clicked list ingredient then keep it 
-                            for (let h = 0; h < this.state.recipes.length; h++) {
-                                // if this.state.recipes[h].title is in the clicked lists then
-                            let matchingGListid = groceryList.indexOf(ingredients[k]);
-                            groceryList.splice(matchingGListid, 1);
-            
-                            }     
-                        }
-                        
-             */
-            //console.log("matchingGlist id is: " + matchingGListid);
 
             document.getElementById(id).style.background = "none";
             document.getElementById(id).style.color = "black";
-            document.getElementById(id).style.border = "none"
-            this.setState({ clickedRecipes: clickedRecipes })  //"" removed by Brad
-            this.setState({ groceryList: filteredList2 })     //"" removed by Brad,grecery list needs to be set
-
+            document.getElementById(id).style.border = "none";
+            this.setState({ clickedRecipes: clickedRecipes });  //[""] removed by Brad
+            this.setState({ groceryList: filteredList2 });      //[""] removed by Brad
+            this.setState({ allIngredients: filteredList2 });
 
         } else {
 
@@ -149,15 +128,19 @@ class List extends Component {
 
         let arr = [];
 
+        //NOTE: Extraction algorythm can probably be more efficient
+
         for (let i = 0; i < clickedRecipeTitles.length; i++) {
             for (let j = 0; j < this.state.recipes.length; j++) {
                 //compare titles with all user recipes
                 if (clickedRecipeTitles[i] === this.state.recipes[j].title) {
-                    //if titles matches then add ingredienst array to array to return
+                    //If titles matches then add all items in the
+                    // ingredients array to the array to return.
+                    // I tried arr.concat() but that din't work. -Brad 
                     for (let k = 0; k < this.state.recipes[j].ingredients.length; k++) {
                         arr.push(this.state.recipes[j].ingredients[k]);
                     }
-                    
+
                 }
             }
         }

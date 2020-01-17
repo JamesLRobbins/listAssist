@@ -33,7 +33,14 @@ const defaultUserData = [
       "Boil some water. Cook chicken. Put tomato sauce on it. Put the parm parm on it.",
     ingredients: ["Cheese", "Sauce", "Noodles"],
     date: new Date(Date.now())
-  }    
+  },
+  {
+    title: "Shrimp Scampi",
+    instructions:
+      "Boil some water. Take the shrimp and scampi it.",
+    ingredients: ["Shrimp", "Garlic", "Butter"],
+    date: new Date(Date.now())
+  }      
 ];
 
 
