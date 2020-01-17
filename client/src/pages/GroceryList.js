@@ -69,17 +69,17 @@ class List extends Component {
     handleClick = (id, ingredients) => {
 
         console.log("Ingredients clicked are: " + ingredients);
-        console.log("this.state.recipes: " + this.state.recipes[0]);
+        //console.log("this.state.recipes is an array of objects: " + this.state.recipes);
 
         let clickedRecipes = this.state.clickedRecipes;
         let groceryList = this.state.groceryList
         let allIngredients = this.state.allIngredients
 
         if (clickedRecipes.includes(id)) {
-            console.log("clickedRecipes: " + clickedRecipes);
+            console.log("clickedRecipes before: " + clickedRecipes);
 
             const isID = (element) => element === id;
-            console.log("index is: " + (clickedRecipes.findIndex(isID)));
+            //console.log("index to remove is: " + (clickedRecipes.findIndex(isID)));
             let indexToRemove = clickedRecipes.findIndex(isID);
 
             //Splice out the 1 recipe that was clicked by using its index
