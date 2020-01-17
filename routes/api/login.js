@@ -1,6 +1,4 @@
 const router = require("express").Router();
-//TODO: Impement login controller
-//const loginController = require("../../controllers/loginController");
 
 
 // MATCHES with /api/login

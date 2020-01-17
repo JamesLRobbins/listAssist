@@ -12,10 +12,35 @@ const db = require("../models");
 // ** make sure you change the model name after db.
 // ** watch for the sort function it depends on the date column
 
+const defaultUserData = [
+  {
+    title: "Fajitas",
+    instructions:
+      "Cook chicken. Put tomato sauce on it. Put the parm parm on it.",
+    ingredients: ["Chicken", "Steak", "Onions", "Tomatoes", "Cheese"],
+    date: new Date(Date.now())
+  },
+  {
+    title: "Pizza",
+    instructions:
+      "Roll out the dough. Cook chicken. Put tomato sauce on it. Put the parm parm on it.",
+    ingredients: ["Cheese", "Sauce", "Pepperoni"],
+    date: new Date(Date.now())
+  },
+  {
+    title: "Spaghetti",
+    instructions:
+      "Boil some water. Cook chicken. Put tomato sauce on it. Put the parm parm on it.",
+    ingredients: ["Cheese", "Sauce", "Noodles"],
+    date: new Date(Date.now())
+  }    
+];
+
+
 module.exports = {
 
   getSessionUser: function (req, res, next) {
-    console.log('===== getSessionUser in userController!!======');
+    console.log('===== getSessionUser in userController======');
     console.log(req.user);
     if (req.user) {
       res.json({ user: req.user })
@@ -49,7 +74,8 @@ module.exports = {
         else {
           const newUser = new db.User({
             username: req.body.username,
-            password: req.body.password
+            password: req.body.password,
+            recipes: defaultUserData
           })
 
           newUser.save((err, savedUser) => {
@@ -61,9 +87,14 @@ module.exports = {
       })
   },
   findById: function (req, res) {
+    console.log("req in userController.js findbyID is: " + JSON.stringify(req.params));
+          //.findById(req.params.id)  --Does not work even though exactly like documentation
     db.User
       .findById(req.params.id)
-      .then(dbModel => res.json(dbModel))
+      .then(dbModel => {
+        console.log("dbModel username in findbyID is: " + dbModel);
+        res.json(dbModel)
+      })
       .catch(err => res.status(422).json(err));
   },
   create: function (req, res) {
