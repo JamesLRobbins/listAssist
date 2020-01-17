@@ -88,7 +88,7 @@ class Login extends Component {
                     data-bs-hover-animate="pulse"
                     href="#"
                   >
-                    Login
+                   
                   </a>
                 </li>
                 <li className="nav-item" role="presentation">
@@ -178,6 +178,7 @@ class Login extends Component {
           > Log in
           
           </button>
+          
           
         </div>
       </form>
