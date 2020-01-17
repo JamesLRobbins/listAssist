@@ -38,8 +38,8 @@ router.route("/new")
     .post(userController.create);
 
 
-// MATCHES with /api/user/:id
-router.route("/:id")
+// MATCHES with /api/user/recipe/:id
+router.route("/recipe/:id")
     .get(userController.findById)
     .put(userController.update)
     .delete(userController.remove);

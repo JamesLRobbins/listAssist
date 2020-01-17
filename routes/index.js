@@ -23,7 +23,6 @@ router.post("/logout", (req, res) => {
     });
  */
 
-// DO NOT ADD UNTIL REACT
 // If no API ROUTES are hit, send the react app
 router.use(function (req, res)
 {

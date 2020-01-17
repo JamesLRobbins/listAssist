@@ -15,7 +15,7 @@ const db = require("../models");
 module.exports = {
 
   getSessionUser: function (req, res, next) {
-    console.log('===== getSessionUser in userController!!======');
+    console.log('===== getSessionUser in userController======');
     console.log(req.user);
     if (req.user) {
       res.json({ user: req.user })
@@ -61,8 +61,10 @@ module.exports = {
       })
   },
   findById: function (req, res) {
+    console.log("req in userController.js findbyID is: " + JSON.stringify(req.params));
     db.User
-      .findById(req.params.id)
+      //.findById(req.params.id)  --Does not work even though exactly like documentation
+      .findOne({ _id: req.params.id})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

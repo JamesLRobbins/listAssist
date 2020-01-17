@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import Logo from "../components/Logo";
 import RecipeList from "../components/Recipes";
 import Ingredients from "../components/Ingredients";
-import recipes from "../testRecipes.json";
+//import recipes from "../testRecipes.json";
 import Wrapper from "../components/Wrapper";
 import axios from "axios";
 
 class List extends Component {
 
     state = {
-        recipes,
+        recipes: [],
         clickedRecipes: [],
         allIngredients: [],
         groceryList: [],
@@ -33,11 +33,11 @@ class List extends Component {
             this.setState({
               loggedIn: true,
               username: response.data.user.username
-            })
+            });
 
-            console.log("id: " + response.data.user.id);
+            console.log("id in GroceryList.js getUser(): " + response.data.user._id);
 
-            populateUserRecipes(response.data.user.id);
+            this.populateUserRecipes(response.data.user._id);
 
           } else {
             console.log('Get user: no user');
@@ -51,9 +51,16 @@ class List extends Component {
 
       populateUserRecipes(id) {
           //Send the user id to get the recipes saved for that user
-          //TODO
-          axios.get("api/user/recipe/id");
+          console.log("id in populateUserRecipes call is: " + id);
 
+          //Get the user and their recipes from the db
+          let data = axios.get("/api/user/recipe/" + id);
+          console.log("data in GroceryList.js populateUserRecipes is: " + JSON.stringify(data));
+
+          this.setState({
+            
+            recipes: data.data.recipes
+          })
       }
     
 
@@ -109,7 +116,7 @@ class List extends Component {
                                     <RecipeList
                                         id={recipe.id}
                                         key={recipe.id}
-                                        name={recipe.name}
+                                        name={recipe.title}  //Changed .name to .title to match db
                                         ingredients={recipe.ingredients}
                                         handleClick={this.handleClick}
                                     
