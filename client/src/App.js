@@ -7,6 +7,14 @@ import "./App.css";
 import Register from "./pages/Register";
 import List from "./pages/GroceryList";
 
+{/* import "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"> */}
+// import "assets/css/Footer-Basic.css";
+// {/* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"> */}
+// import "https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css";
+// import "assets/css/Navigation-Clean.css";
+// import "assets/css/Registration-Form-with-Photo.css";
+
+
 
 class App extends Component {
   constructor() {
@@ -66,9 +74,12 @@ class App extends Component {
                 updateUser={this.updateUser}
               />}
           />
+          
           <Route exact path="/register" component={Register} />
           <Route exact path="/grocerylist" component={List} />
         </Router>
+        
+        
 
 
       </div>
