@@ -62,10 +62,13 @@ module.exports = {
   },
   findById: function (req, res) {
     console.log("req in userController.js findbyID is: " + JSON.stringify(req.params));
+          //.findById(req.params.id)  --Does not work even though exactly like documentation
     db.User
-      //.findById(req.params.id)  --Does not work even though exactly like documentation
-      .findOne({ _id: req.params.id})
-      .then(dbModel => res.json(dbModel))
+      .findById(req.params.id)
+      .then(dbModel => {
+        console.log("dbModel username in findbyID is: " + dbModel);
+        res.json(dbModel)
+      })
       .catch(err => res.status(422).json(err));
   },
   create: function (req, res) {
